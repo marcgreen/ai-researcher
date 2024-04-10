@@ -1,3 +1,48 @@
+# code flow
+
+```mermaid
+graph TB
+    A[User Input:<br>Research Topic] --> B{Generate<br>Subtopic Checklist}
+    B --> D1[Subtopic 1]
+    B --> D2[Subtopic 2]
+    B --> D3[...]
+    B --> Dn[Subtopic N]
+    
+    subgraph Subtopic Loop
+        E{Generate Initial<br>Search Queries} --> F{Perform<br>Search Round}
+        F --> G[Search Rounds<br>3 times]
+        G --> H{Generate Additional<br>Search Queries}
+        H --> F
+        F --> I{Generate<br>Initial Report}
+        I --> J{Analyze Report<br>and Generate<br>Additional Searches}
+        J --> K[Analysis and Update<br>Rounds 3 times]
+        K --> L{Update Report with<br>Additional Information}
+        L --> J
+        J --> M{Generate<br>Boss Feedback}
+        M --> N{Generate Final Round<br>of Searches Based<br>on Feedback}
+        N --> O{Update Report with<br>Final Information}
+        O --> P[Final Report<br>for Subtopic]
+    end
+    
+    D1 --> E
+    D2 --> E
+    D3 --> E
+    Dn --> E
+    
+    subgraph Final Steps
+        P --> Q{Combine Subtopic<br>Reports into<br>Comprehensive Report}
+        Q --> R{Save Comprehensive<br>Report to File}
+    end
+    
+    classDef input fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef output fill:#9ff,stroke:#333,stroke-width:2px;
+    classDef loop fill:#ff9,stroke:#333,stroke-width:2px;
+    
+    class A input;
+    class R output;
+    class G,K loop;
+```
+
 # ai-researcher
 [![Twitter Follow](https://img.shields.io/twitter/follow/mattshumer_?style=social)](https://twitter.com/mattshumer_) [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1fn2Xisstp0d30_bAaLPA1y-0_svojLF3?usp=sharing)
 
